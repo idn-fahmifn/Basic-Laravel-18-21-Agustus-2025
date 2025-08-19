@@ -16,9 +16,12 @@
     @if ($errors->any())
         <ol>
             @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
+                <li>{{ $error }}</li>
             @endforeach
         </ol>
+    @endif
+    @if (session('fail'))
+        <span>{{ session('fail') }}</span>
     @endif
 
     <form action="{{ route('umur.proses') }}" method="post">
