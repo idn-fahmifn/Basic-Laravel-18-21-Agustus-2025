@@ -12,7 +12,7 @@ class AgeController extends Controller
     }
     public function sukses()
     {
-        return "Anda berhasil masuk";
+        return view('umur.sukses');
     }
     public function proses(Request $request)
     {
@@ -32,5 +32,14 @@ class AgeController extends Controller
             'umur.min' => 'Umur minimal 1 Tahun',
             'umur.max' => 'Umur maksimal 100 Tahun',
         ]);
+
+        // session data umur untuk dikirim ke middlwware
+        $request->session()->put('age', $request->umur);
+
+        // mengrahkan ke route sukses.
+        return redirect()->route('umur.sukses')
+        ->with('success', 'Berhasil masuk');
+
+
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgeController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KendaraanController;
+use App\Http\Middleware\AgeMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -73,7 +74,7 @@ Route::prefix('umur')->group(function(){
     Route::get('form-umur', [AgeController::class, 'form'])
     ->name('umur.form');
     Route::get('sukses', [AgeController::class, 'sukses'])
-    ->name('umur.sukses');
+    ->middleware(AgeMiddleware::class)->name('umur.sukses');
     
     // proses data
      Route::post('proses', [AgeController::class, 'proses'])
