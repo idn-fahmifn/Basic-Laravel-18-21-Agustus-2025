@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kode_unik')->unique();
             $table->integer('stok');
             $table->string('harga');
+            $table->enum('kategori',['makanan', 'elektronik', 'perabot'])->default('elektronik');
             $table->timestamps();
         });
     }

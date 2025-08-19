@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Barang;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -10,7 +11,13 @@ class BarangController extends Controller
     {
         // silakan masukan logika aplikasii.
         // return "Ini adalah respon index dari controller barang.";
-        return view('nama_halaman');
+
+        $data = Barang::all();
+
+        // return view('halaman', compact('data'));
+        return view('halaman', [
+            'barang' => $data
+        ]);
     }
 
     public function createBarang(){
